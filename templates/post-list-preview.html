@@ -1,0 +1,19 @@
+<div class="post_list">
+$for(posts)$
+<div class="post_wrapper">
+	<a href="$url$"></a>
+	<div class="post">
+		$if(illustration)$<img src="$illustration$" />$endif$
+		<div class="post_title">
+			<h2>$title$</h2>
+			<p>Publié le $date$$if(author)$ par $author$$endif$.</p>
+		</div>
+		$if(teaser)$
+		<div class="post_body">
+			$teaser$
+		</div>
+		$endif$
+	</div>
+</div>
+$endfor$
+</div>
