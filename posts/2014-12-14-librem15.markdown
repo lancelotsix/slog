@@ -1,0 +1,26 @@
+---
+title: Librem 15, ordinateur à tendance libre
+authon: Lancelot SIX
+---
+
+À l'ordre du jours : une campagne de financement participatif pour un ordinateur portable pouvant être utilisé (presque) intégralement avec des logiciels libres.
+<!--more-->
+
+Et oui. L'objectif est ambitieux, et la concurrence très limitée (presque inexistante en fait). Jusqu'ici, nous pouvions trouver des ordinateurs portables pouvant tourner avec «linux libre» chez [ThinkPenguin][ThinkPenguin]. Or, tout comme le librem on n'est pas totalement libre (BIOS par exemple). De plus, les machines sont d'un aspect esthétique «passable».
+
+Du point de vue des ordinateurs réellement intégralement libre, on n'en a qu'un de connu (voir le programme «[Respect Your Freedom][RyF]» de la [FSF][FSF]), et [il n'est plus en stock qui plus est][x60].
+
+Pour combler ce vide, voici un nouveau projet. Le «[Librem15][librem15]» est un projet d'ordinateur de 15', conçu par [puri.sm][purism]
+
+<center><iframe src="http://player.vimeo.com/video/112034243" width="500" height="280" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></center>
+
+Si on regarde, c'est un ordinateur assez cher (très). La question est donc de savoir si la liberté vaut ce prix. Il me semble que oui. Enfin, et pour une touche plus personnelle, est-ce qu'il est pertinent de dépenser une telle somme pour soutenir un tel projet alors que je n'ai pas besoin de remplacer mon/mes ordinateurs actuels. J'espère que j'aurai trouvé la réponse d'ici à la fin de la campagne de financement.
+
+Affaire à suivre...
+
+[FSF]: http://fsf.org
+[RyF]: http://www.fsf.org/resources/hw/endorsement/respects-your-freedom
+[ThinkPenguin]: https://www.thinkpenguin.com/
+[librem15]: https://www.crowdsupply.com/purism/librem-laptop
+[purism]: http//puri.sm
+[x60]: http://shop.gluglug.org.uk/product/ibm-lenovo-thinkpad-x60-coreboot/
