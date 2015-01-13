@@ -1,0 +1,19 @@
+---
+title: Jolla
+author: Lancelot SIX
+---
+Voici un nouvel arrivant prétendant trouver sa place dans le monde déjà ô combien saturé des téléphones mobiles : [Jolla](http://jolla.com).
+
+Alors pourquoi s'en préoccuper alors que Microsoft propose déjà un généralissime «windows phone», Apple le resplendissant «iOS» et Google «Android» ? Si on pense en plus à Mozilla qui prépare «Firefox OS» et un consortium incluant (si je ne m'abuse) Samsung et Intel qui peaufinent «Tizen» et enfin Canonical qui prépare «Ubuntu Phone» on ne sait plus trop où donner de la tête. A quoi bon un «[Sailfish OS](https://sailfishos.org/)» en plus de tout ça ?
+
+Procédons méthodiquement donc. Tout d'abord, croyant fermement aux vertus des logiciels libres, je me permet de rayer de la liste les deux premiers concurrents. Aussi bon que puisse éventuellement être leurs systèmes (et il ne s'agit là que d'une supposition), je suis prêt à sacrifier un peu de confort au profit de mes libertés.
+
+Firefox OS quand à lui est un système ayant pour vocation à faire tourner des applications écrites en HTML/CSS/Javascript (généralement appelés dans le jargon technique HTML5), comme le fait son grand frère Firefox. Hors, je ne suis pas un fan de ces technologies, et ne pense pas qu'elle soit adapté à tout type de développement (surtout quand on arrive sur du développement de logiciel embarqué). Par snobisme et obscurantisme (oui, il faut bien appeler les choses par leur nom), je laisse la main. Il ne faut pas oublier que c'est marrant de développer des applications, autant le faire de la manière qui nous amuse le plus.
+
+Nous arrivons au système de Google. Il est très bon, la base est «open-source», presque que du tout bon. Presque tout d'abord parce que seul ce qui sort de chez Google est opens-source, pas ce qui est dans la poche des utilisateurs. Entre temps, les fabricants sont passé par là, et ont pour leur grande majorité verrouillé de la gestion du matériel et éventuellement de l'interface utilisateur. Ensuite, le système est vraiment pensé pour être utilisé conjointement avec les services proposés par Google (Gmail en tête, ...) quit ont pour vocation à faire du profilage publicitaire. En résumé, Android est un très bon produit, mais de mon point de vue surtout un bon produit d'appel pour les services de Google. Donc ça sera un oui mais sans plus (étant donné qu'on peu significativement s'abstraire des services Google).
+
+De la même manière, Canonical semble orienter son OS pour être fortement accolé à leur plateforme Ubuntu One. Voulant avoir des solutions qui s'adaptent à mes usages, et non des usages qui s'adaptent à mon téléphone, j'aurai tendance à n'approcher que prudemment cette solution.
+
+Restent en lisse «Tizen» et «Sailfish OS». En ce qui me concerne, la petite société Jolla m'intrigue et m'attire de par son histoire : après que Nokia décide de signer un partenariat d'exclusivité avec Microsort, abandonnant ainsi leur solution open-source «meego», certains employés ont décidé de ne pas suivre le mouvement. Voulant garder une solution libre et voulant continuer à faire évoluer ce qu'était «meego». Ils ont donc fondé Jolla et ont commencé à construire «Sailfish OS» à partir de ce qu'était «meego». Enfin, dernier argument et non des moindres, «Sailfish OS» est basé sur le projet libre «[Mer](http://merproject.org)» dont le nom à lui seul devrait convaincre tous les marins !
+
+Avis à tous donc, il y a énormément de choix quand aux solutions permettant de faire tourner des téléphones (à tous budgets, pas uniquement des monstres à 600€). Même si je n'ai fait qu'un balayage rapide il y a nettement plus à dire. Ceci étant dit, un roman me ferait arriver à la même conclusion: pour moi ça sera Sailfish OS.
