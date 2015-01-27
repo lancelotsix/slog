@@ -3,6 +3,8 @@
 import           Data.Monoid (mappend)
 import           Control.Monad (forM)
 import           Hakyll
+import           System.FilePath ((</>))
+import           System.Locale (TimeLocale(..))
 
 
 --------------------------------------------------------------------------------
@@ -10,11 +12,11 @@ main :: IO ()
 main = hakyllWith config $ do
     -- All the static resources
     forM ["lancelot_six.pdf"
-	 ,"publications/*"
-	 ,"images/*"] $ \pat -> do
+         ,"publications/*"
+         ,"images/*"] $ \pat -> do
         match pat $ do
-	    route idRoute
-	    compile copyFileCompiler
+            route idRoute
+            compile copyFileCompiler
 
     match "css/*" $ do
         route   idRoute
@@ -69,7 +71,7 @@ main = hakyllWith config $ do
 --------------------------------------------------------------------------------
 postCtx :: Context String
 postCtx =
-    dateField "date" "%B %e, %Y" `mappend`
+    dateFieldWith frenchTime "date" "%e %B %Y" `mappend`
     blogCtx
 
 teaserCtx :: Context String
@@ -81,6 +83,24 @@ blogCtx = constField "blogtitle" "S.Log" `mappend`
           defaultContext
 
 --------------------------------------------------------------------------------
+frenchTime :: TimeLocale
+frenchTime = TimeLocale { wDays = [ ("Lundi", "Lun"), ("Mardi", "Mar"), ("Mercredi", "Mer")
+                                  , ("Mercredi", "Mer"), ("Jeudi", "Jeu"), ("Vendredi", "Ven")
+                                  , ("Samedi", "Sam"), ("Dimanche", "Dim")],
+                          months = [ ("janvier", "Jan"), ("février", "Fev"), ("mars", "mar")
+                                   , ("avril", "avr"), ("mai", "mai"), ("juin", "jun"), ("juillet", "jul")
+                                   , ("aout", "aou"), ("septembre", "sept"), ("octobre", "oct")
+                                   , ("novembre", "nov"), ("décembre", "dec")],
+                          intervals = [ ("an", "ans"), ("moi", "mois"), ("jour", "jours"), ("heure", "heures")
+                                      , ("minute", "minutes"), ("seconde", "secondes")
+                                      , ("mili seconde", "mili secondes")],
+                          amPm = ("AM", "PM"),
+                          dateTimeFmt = "%A %e %B %Y à %H:%M:%S",
+                          dateFmt = "%m/%d/%y",
+                          timeFmt = "%H:%M:%S",
+                          time12Fmt = "%I:%M:%S %p"
+                        }
+
 config :: Configuration
 config = defaultConfiguration { deployCommand = "rsync -rva --delete " ++ destinationDirectory defaultConfiguration </> "."
                                                                        ++ " lancelotsix@home.lancelotsix.com:/home/www/blog.home.lancelotsix.com/"
