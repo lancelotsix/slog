@@ -7,7 +7,7 @@ import           Hakyll
 
 --------------------------------------------------------------------------------
 main :: IO ()
-main = hakyll $ do
+main = hakyllWith config $ do
     -- All the static resources
     forM ["lancelot_six.pdf"
 	 ,"publications/*"
@@ -79,3 +79,9 @@ blogCtx :: Context String
 blogCtx = constField "blogtitle" "S.Log" `mappend`
           -- constField "blogtitle" "σλog" `mappend`
           defaultContext
+
+--------------------------------------------------------------------------------
+config :: Configuration
+config = defaultConfiguration { deployCommand = "rsync -rva --delete " ++ destinationDirectory defaultConfiguration </> "."
+                                                                       ++ " lancelotsix@home.lancelotsix.com:/home/www/blog.home.lancelotsix.com/"
+                              }
