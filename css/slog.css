@@ -43,7 +43,6 @@ html, body {
 }
 
 #content_wrapper {
-	// border-radius: 0.5em;
 	margin-left: auto;
 	margin-right: auto;
 	background-color: white;
@@ -59,8 +58,6 @@ html, body {
 }
 
 #footer {
-	/* margin-top: 3em; */
-	//padding: 0.5em;
 	border-top: 1px solid rgba(0, 0, 0, 0.1);
 	text-align: center;
 }
