@@ -4,7 +4,7 @@ author: Lancelot SIX
 illustration: /images/hakyll.png
 ---
 
-Encore une fois, ce blog renaît de ses centres. Encore une fois, avec une nouvelle technologie. Aujourd'hui, on quitte le monde à la mode du «[Ruby On Rails][RoR]» pour rejoindre celui de [hakyll][hakyll].
+Encore une fois, ce blog renaît de ses cendres. Encore une fois, avec une nouvelle technologie. Aujourd'hui, on quitte le monde à la mode du «[Ruby On Rails][RoR]» pour rejoindre celui de [hakyll][hakyll].
 <!--more-->
 
 Deux changements majeurs :
@@ -24,12 +24,12 @@ Dans le cas d'un blog, tout cela est relativement superflu. Le contenu à affich
 
 Une solution alternative envisagée a été de migrer sur  [yesod][yesod]. De même, on fait du [haskell][haskell]. On gagne la vérification de type du compilateur qui permet de s'assurer de ne pas produire de lien mort. Idem avec les formulaires et leur vérification, que du bonheur ! Cependant, certains problèmes des sites dynamiques persistent. Nous avons une certaine difficulté à gérer les dépendances (même si `cabal` et ses `sandbox` aident grandement), et des difficultés de migrations d'une version à l'autre qui font que pour un site que de toute façon personne ne lit, on peut être tenté de ne pas faire les migrations vers les version plus récentes du cadriciel.
 
-Or, c'est là que la bas blesse. Les mises à jours sont là pour plusieurs raisons. On a d'un côté les nouvelles fonctionnalités inutiles (autrement dit on s'en cogne), et d'un autre les mises à jours de sécurité corrigeant des vulnérabilités. Autant les premières sont en général plutôt embêtantes puisque la nouvelle façon super de faire le choses est incompatible avec l'ancienne (et implique souvent de devoir faire le changement qu'on le veuille ou non), autant les mises à jours de sécurité sont nécessaires. Tout ça pour dire que se tenir à jours demande du travail. Pour un ensemble de pages HTML, il n'y a pas tant de soucis à se poser.
+Or, c'est là que la bât blesse. Les mises à jours sont là pour plusieurs raisons. On a d'un côté les nouvelles fonctionnalités inutiles (autrement dit on s'en cogne), et d'un autre les mises à jours de sécurité corrigeant des vulnérabilités. Autant les premières sont en général plutôt embêtantes puisque la nouvelle façon super de faire le choses est incompatible avec l'ancienne (et implique souvent de devoir faire le changement qu'on le veuille ou non), autant les mises à jours de sécurité sont nécessaires. Tout ça pour dire que se tenir à jours demande du travail. Pour un ensemble de pages HTML, il n'y a pas tant de soucis à se poser.
 
 Ce que l'on perds
 -----------------
 
-Le site n'étant plus dynamiques, nous perdons toues les fonctionnalités dynamiques. Pour être honnête, la seule partie dynamique de ce site jusqu'ici exploitée est la possibilité donnée aux visiteurs de laisser des commentaires. N'ayant pour ainsi dire aucun visiteur, et les rares qui tombent ici par je ne sais quelle mal change ne laissent pas de commentaire, pas de problème. On ne perd pas grand chose du coup.
+Le site n'étant plus dynamiques, nous perdons toues les fonctionnalités dynamiques. Pour être honnête, la seule partie dynamique de ce site jusqu'ici exploitée est la possibilité donnée aux visiteurs de laisser des commentaires. N'ayant pour ainsi dire aucun visiteur, et les rares qui tombent ici par je ne sais quelle malchange ne laissent pas de commentaire, pas de problème. On ne perd pas grand chose du coup.
 
 Ce qu'il manque
 ---------------

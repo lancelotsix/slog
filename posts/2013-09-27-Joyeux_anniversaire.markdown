@@ -15,6 +15,6 @@ Pour mémoire, l'idée d'un système d'exploitation libre est de pouvoir utilise
 - L'utilisateur peut modifier le logiciel afin de l'adapter à ses besoins spécifiques
 - L'utilisateur peut distribuer le logiciel et les modifications qu'il y a apporté à un tiers.
 
-Aujourd'hui le projet a 30 ans et se port relativement bien ! Le noyau qui est développé pour ce système (le HURD) n'est pas totalement finalisé (il lui manque encore aujourd'hui la possibilité de gérer le son et l'USB), et est donc très couramment remplacé par le noyeau nommé Linux pour former un système d'exploitation GNU utilisant Linux usuellement nommé GNU/Linux. Note à tous ceux qui utilisent un système «Linux» : vous n'iriez pas bien loin sans l'ensemble du système GNU au dessus de votre noyau.....
+Aujourd'hui le projet a 30 ans et se porte relativement bien ! Le noyau qui est développé pour ce système (le HURD) n'est pas totalement finalisé (il lui manque encore aujourd'hui la possibilité de gérer le son et l'USB), et est donc très couramment remplacé par le noyeau nommé Linux pour former un système d'exploitation GNU utilisant Linux usuellement nommé GNU/Linux. Note à tous ceux qui utilisent un système «Linux» : vous n'iriez pas bien loin sans l'ensemble du système GNU au dessus de votre noyau.....
 
 Je tiens donc à profiter de cette occasion pour remercier l'ensemble des contributeurs des différents projets de logiciels libres qui me permettent aujourd'hui d'utiliser mon ordinateur sereinement !

@@ -12,7 +12,7 @@ Autrement dit, les internautes n'ont même pas le statut «gratifiant» donné a
 
 Signalons que cette vision selon laquelle internet n'est rien de plus que de la télévision pseudo interactive est tout à fait au goût du jour. Le rapport Lescure remis cette semaine en grande pompe au président propose ni plus ni moins que d'ajouter une mission au CSA : celle de surveiller internet (en reprenant les attributions de l'actuel Hadopi). Internet serait donc mis sur un pied d'égalité avec la télévision, schéma vertical où une infime minorité assène la bonne parole à tous les consommateurs.
 
-Heureusement, bon nombre d'autres intervenants du documentaire ont une position bien différence. Internet est un espace d'expression, et la liberté de tout un chacun d'apporter sa pierre à l'édifice, de s’exprimer est une nécessité absolue.
+Heureusement, bon nombre d'autres intervenants du documentaire ont une position bien différente. Internet est un espace d'expression, et la liberté de tout un chacun d'apporter sa pierre à l'édifice, de s’exprimer est une nécessité absolue.
 
 Malheureusement, nos décideurs pensent plutôt comme Mme Marais plutôt que comme les autres intervenants, pourtant tous des piliers d'internet...
 
