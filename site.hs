@@ -3,8 +3,11 @@
 import           Data.Monoid (mappend)
 import           Control.Monad (forM_)
 import           Hakyll
+import           Hakyll.Core.Identifier (Identifier(..), toFilePath)
 import           System.FilePath ((</>))
 import           System.Locale (TimeLocale(..))
+import           Data.List (find)
+import           Data.Maybe (Maybe(..), fromMaybe)
 
 
 --------------------------------------------------------------------------------
@@ -67,11 +70,43 @@ main = hakyllWith config $ do
     match "templates/*" $ compile templateCompiler
 
 
+
+--------------------------------------------------------------------------------
+data License = License { name :: String
+                       , logoUrl :: String
+                       , refUrl :: String
+                       }
+
+licenseList :: [License]
+licenseList = [ License "cc-by" "/images/cc-by.png" "https://creativecommons.org/licenses/by/4.0"
+              , License "cc-by-sa" "/images/cc-by-sa.png" "https://creativecommons.org/licenses/by-sa/4.0"
+              , License "cc-by-nd" "/images/cc-by-nd.png" "https://creativecommons.org/licenses/by-nd/4.0"
+              , License "cc-by-nc" "/images/cc-by-nc.png" "https://creativecommons.org/licenses/by-nc/4.0"
+              , License "cc-by-nc-sa" "/images/cc-by-nc-sa.png" "https://creativecommons.org/licenses/by-nc-sa/4.0"
+              , License "cc-by-nc-nd" "/images/cc-by-nc-nd.png" "https://creativecommons.org/licenses/by-nc-nd/4.0"
+              ]
+defaultLicense :: License
+defaultLicense = head licenseList
+
+findLicense :: Maybe String -> Maybe License
+findLicense (Just lname) = case find (\l -> name l == lname) licenseList of
+                             Just l -> Just l
+                             Nothing -> Nothing
+findLicense Nothing = Just defaultLicense
 --------------------------------------------------------------------------------
 postCtx :: Context String
 postCtx =
+    field "license-desc-url" (licenseElt refUrl) `mappend`
+    field "license-name" (licenseElt name)  `mappend`
+    field "license-logo-url" (licenseElt logoUrl)  `mappend`
     dateFieldWith frenchTime "date" "%e %B %Y" `mappend`
     blogCtx
+  where licenseElt :: (License -> String) -> Item String -> Compiler String
+	licenseElt accessor i =  do
+          lname <- getMetadataField (itemIdentifier i) "license"
+          case findLicense lname of
+                  Nothing -> error $ "Unknown license " ++ fromMaybe "" lname ++ " for item " ++ show (itemIdentifier i)
+                  Just l -> return $ accessor l
 
 teaserCtx :: Context String
 teaserCtx = teaserField "teaser" "content" `mappend` postCtx

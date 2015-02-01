@@ -2,9 +2,13 @@
 	$if(illustration)$<img src="$illustration$" alt="$title$" />$endif$
 	<div class="post_title">
 		<h1>$title$</h1>
-		<p>Publié le $date$$if(author)$ par $author$$endif$.</p>
+		<p>Publié le $date$$if(author)$ par $author$$endif$.<br />
+		<a href="$license-desc-url$" rel="license" target="_blank"><img alt="$license-name$" src="$license-logo-url$" /></a></p>
+		
 	</div>
 	<div class="post_body">
 		$body$
 	</div>
 </div>
+
+
