@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
 import           Data.Monoid (mappend)
-import           Control.Monad (forM)
+import           Control.Monad (forM_)
 import           Hakyll
 import           System.FilePath ((</>))
 import           System.Locale (TimeLocale(..))
@@ -11,12 +11,11 @@ import           System.Locale (TimeLocale(..))
 main :: IO ()
 main = hakyllWith config $ do
     -- All the static resources
-    forM ["lancelot_six.pdf"
-         ,"publications/*"
-         ,"images/*"] $ \pat -> do
-        match pat $ do
-            route idRoute
-            compile copyFileCompiler
+    forM_ ["lancelot_six.pdf"
+          ,"publications/*"
+          ,"images/*"] $ \pat ->  match pat $ do
+                                                 route idRoute
+                                                 compile copyFileCompiler
 
     match "css/*" $ do
         route   idRoute
