@@ -14,20 +14,20 @@ Assez parlé des Nix, regardons ce qui m'amène. Il peut être déroutant de tra
 
 ## Installer un programme le temps de l'utiliser
 
-Par exemple, si je ne souhaite pas garder `imagemagick` installé en permanence dans mon système (soyons honnête, ça ne me sert pas toues les jours), mais que j'ai ai besoin temporairement.... Voilà ma solution:
+Par exemple, si je ne souhaite pas garder `imagemagick` installé en permanence dans mon système mais que j'ai ai temporairement besoin.... Soyons honnête, ça ne me sert pas toues les jours. Voilà ma solution:
 
 ```bash
 $ nix-shell -p imagemagick
 [nix-shell:~/dev/llog/images]$ convert nixos-logo-only-hires.png -rexize 64x64 nixos.png
 ```
 
-Cette approche est également très pratique pour teste le super logiciel de fou dont on viens d'entendre parler, mais qu'on ne lancera probablement plus de deux fois.
+Cette approche est également très pratique pour pouvoir essayer le super logiciel tout nouveau dont on viens d'entendre parler, mais que l'on ne lancera probablement pas plus de deux fois.
 
 ## Fichier de développement par projet
 
-Avec Nix, il est possible d'écrire un descripteur par projet (fichier `default.nix`) permettant de décrire les dépendences devant être disponibles durant le développement. Plus besoin d'installer toute une suite d'outils et de polluer son système pour travailler.
+Avec Nix, il est possible d'écrire un descripteur par projet (fichier `default.nix`) permettant de décrire les dépendances devant être disponibles durant le développement. Plus besoin d'installer toute une suite d'outils et de «polluer» son système pour travailler.
 
-Voici le descripteur que j'utilise pour travailler sur ce blog (et le compiler / déployer):
+Voici le descripteur que j'utilise pour travailler sur ce blog:
 
 ```nix
 { haskellPackages ? (import <nixpkgs> {}).haskellPackages }:
@@ -59,9 +59,9 @@ et voilà. L'environnement contient toues les outils nécessaires pour travaille
 
 ## Avoir un dépôt local
 
-Une difficulté est de pouvoir disposer de quelques paquets, venant compléter la base de paquets globale. Ceci permet de reproduire un fonctionnement où on n'écrit que quelques `rpm` (déclarant leurs dépendances) à installer au dessus d'un système fonctionnel. La réponse à ce problème m'a été donnée dans [ce blog](http://sandervanderburg.blogspot.fr/2014/07/managing-private-nix-packages-outside.html).
+Une difficulté est de pouvoir disposer de quelques paquets personnels (qu'on ne souhaite pas forcément publier), venant compléter la base de paquets globale. Ceci permet de reproduire un fonctionnement où on n'écrit que quelques `rpm` à installer au dessus d'un système fonctionnel. La réponse à ce problème m'a été donnée dans [ce blog](http://sandervanderburg.blogspot.fr/2014/07/managing-private-nix-packages-outside.html) très instructif.
 
-Voici par exemple l'expression (enregistrée par exemple dans le ficher `custom-packages.nix`) construisant `sqlalchemy_migrate-0.7.2`, tout en dépendant en entrée de différentes expressions définies dans le `nixpkgs` global (`pythonPackages.nose`, `pythonPackages.unittest2`, `pythonPackages.scripttest`, `pythonPackages.tempita`, `pythonPackages.decorator` et  `pythonPackages.sqlalchemy` dans le cas qui nous concerne):
+Voici l'expression (enregistrée par exemple dans le ficher `custom-packages.nix`) construisant `sqlalchemy_migrate-0.7.2`, tout en dépendant en entrée de différentes expressions définies dans le `nixpkgs` global (`pythonPackages.nose`, `pythonPackages.unittest2`, `pythonPackages.scripttest`, `pythonPackages.tempita`, `pythonPackages.decorator` et  `pythonPackages.sqlalchemy` dans le cas qui nous concerne):
 
 ```nix
 { system ? builtins.currentSystem }:
