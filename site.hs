@@ -14,11 +14,12 @@ import           Data.Maybe (Maybe(..), fromMaybe)
 main :: IO ()
 main = hakyllWith config $ do
     -- All the static resources
-    forM_ ["lancelot_six.pdf"
-          ,"publications/*"
-          ,"images/*"] $ \pat ->  match pat $ do
-                                                 route idRoute
-                                                 compile copyFileCompiler
+    match (fromList ["lancelot_six.pdf"
+                    ,"publications/*"
+                    ,"images/**"
+                    ]) $ do
+                           route idRoute
+                           compile copyFileCompiler
 
     match "css/*" $ do
         route   idRoute
