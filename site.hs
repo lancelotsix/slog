@@ -137,6 +137,6 @@ frenchTime = TimeLocale { wDays = [ ("Lundi", "Lun"), ("Mardi", "Mar"), ("Mercre
                         }
 
 config :: Configuration
-config = defaultConfiguration { deployCommand = "rsync -rva --delete " ++ destinationDirectory defaultConfiguration </> "."
+config = defaultConfiguration { deployCommand = "rsync -rv --delete " ++ destinationDirectory defaultConfiguration </> "."
                                                                        ++ " lancelotsix@home.lancelotsix.com:/home/www/blog.home.lancelotsix.com/"
                               }
