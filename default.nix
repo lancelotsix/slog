@@ -1,16 +1,12 @@
-{ haskellPackages ? (import <nixpkgs> {}).haskellPackages }:
+{ nixpkgs ? import <nixpkgs> {}, compiler ? "ghc7101" }:
 let
-  inherit (haskellPackages) cabal cabalInstall
-    hakyll systemFilepath dataDefaultInstancesOldLocale; # Haskell dependencies here
-
-in cabal.mkDerivation (self: {
-  pname = "llog";
-  version = "1.0.0";
-  src = ./.;
-  buildDepends = [
-    # As imported above
-    hakyll systemFilepath
-  ];
-  buildTools = [ cabalInstall ];
-  enableSplitObjs = false;
-})
+  inherit (nixpkgs) pkgs;
+  ghc = pkgs.haskell.packages.${compiler}.ghcWithPackages (ps: with ps; [
+          base cabal-install system-filepath hakyll
+        ]);
+in
+pkgs.stdenv.mkDerivation {
+  name = "llog";
+  buildInputs = [ ghc ];
+  shellHook = "eval $(egrep ^export ${ghc}/bin/ghc)";
+}

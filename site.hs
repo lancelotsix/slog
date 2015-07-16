@@ -5,7 +5,7 @@ import           Control.Monad (forM_)
 import           Hakyll
 import           Hakyll.Core.Identifier (Identifier(..), toFilePath)
 import           System.FilePath ((</>))
-import           System.Locale (TimeLocale(..))
+import           Data.Time.Format (TimeLocale(..))
 import           Data.List (find)
 import           Data.Maybe (Maybe(..), fromMaybe)
 
@@ -14,12 +14,12 @@ import           Data.Maybe (Maybe(..), fromMaybe)
 main :: IO ()
 main = hakyllWith config $ do
     -- All the static resources
-    match (fromList ["lancelot_six.pdf"
-                    ,"publications/*"
-                    ,"images/**"
-                    ]) $ do
-                           route idRoute
-                           compile copyFileCompiler
+    match (    fromGlob "lancelot_six.pdf"
+          .||. fromGlob "images/**"
+          .||. fromGlob "publications/*"
+          ) $ do
+            route idRoute
+            compile copyFileCompiler
 
     match "css/*" $ do
         route   idRoute
@@ -103,7 +103,7 @@ postCtx =
     dateFieldWith frenchTime "date" "%e %B %Y" `mappend`
     blogCtx
   where licenseElt :: (License -> String) -> Item String -> Compiler String
-	licenseElt accessor i =  do
+        licenseElt accessor i =  do
           lname <- getMetadataField (itemIdentifier i) "license"
           case findLicense lname of
                   Nothing -> error $ "Unknown license " ++ fromMaybe "" lname ++ " for item " ++ show (itemIdentifier i)
@@ -121,22 +121,20 @@ blogCtx = constField "blogtitle" "S.Log" `mappend`
 frenchTime :: TimeLocale
 frenchTime = TimeLocale { wDays = [ ("Lundi", "Lun"), ("Mardi", "Mar"), ("Mercredi", "Mer")
                                   , ("Mercredi", "Mer"), ("Jeudi", "Jeu"), ("Vendredi", "Ven")
-                                  , ("Samedi", "Sam"), ("Dimanche", "Dim")],
-                          months = [ ("janvier", "Jan"), ("février", "Fev"), ("mars", "mar")
+                                  , ("Samedi", "Sam"), ("Dimanche", "Dim")]
+                        , months = [ ("janvier", "Jan"), ("février", "Fev"), ("mars", "mar")
                                    , ("avril", "avr"), ("mai", "mai"), ("juin", "jun"), ("juillet", "jul")
                                    , ("aout", "aou"), ("septembre", "sept"), ("octobre", "oct")
-                                   , ("novembre", "nov"), ("décembre", "dec")],
-                          intervals = [ ("an", "ans"), ("moi", "mois"), ("jour", "jours"), ("heure", "heures")
-                                      , ("minute", "minutes"), ("seconde", "secondes")
-                                      , ("mili seconde", "mili secondes")],
-                          amPm = ("AM", "PM"),
-                          dateTimeFmt = "%A %e %B %Y à %H:%M:%S",
-                          dateFmt = "%m/%d/%y",
-                          timeFmt = "%H:%M:%S",
-                          time12Fmt = "%I:%M:%S %p"
+                                   , ("novembre", "nov"), ("décembre", "dec")]
+                        , amPm = ("AM", "PM")
+                        , dateTimeFmt = "%A %e %B %Y à %H:%M:%S"
+                        , dateFmt = "%m/%d/%y"
+                        , timeFmt = "%H:%M:%S"
+                        , time12Fmt = "%I:%M:%S %p"
+                        , knownTimeZones = []
                         }
 
 config :: Configuration
 config = defaultConfiguration { deployCommand = "rsync -rv --delete " ++ destinationDirectory defaultConfiguration </> "."
-                                                                       ++ " lancelotsix@home.lancelotsix.com:/home/www/blog.home.lancelotsix.com/"
+                                                                      ++ " sitedeploy:/var/www/"
                               }
