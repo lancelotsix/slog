@@ -8,6 +8,11 @@ Publications
 Mon activité de recherche s'est principalement orienté autour des problématiques de la
 simulation basée sur des systèmes multi-agents (S.M.A).
 
+- 2015
+    * SIX, L., Saunier, J., Guessoum, Z., &amp; Ieng, S. S. (2015, June).  
+      Une méthode incrémentale de conception dirigée par les tests pour la simulation multi-agent.  
+      In 23e Journées Francophones sur les Systèmes Multi-Agents (JFSMA'15) (pp. 169-178).  
+      [Article](publications/jfsma2015_lsix.pdf)
 - 2014
     * Six, Lancelot, Novembre 2014  
       Vers un modèle de comportements de véhicules lourds en utilisant une méthode incrémentale basée sur la vérification et l'hystérésis : le modèle ArchiPL.  
