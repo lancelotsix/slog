@@ -1,0 +1,153 @@
+---
+title: Urxvt, here I come
+author: Lancelot SIX
+license: cc-by
+illustration: /images/xmonad.png
+---
+
+Since some time, I moved away from the “traditional” linux desktop
+environments such as [Gnome](http://gnome.org/),
+[Kde](https://www.kde.org/) or [Xfce](http://www.xfce.org/).
+Not that those usual desktop environments are bad, or hard to use
+(far from that), just that at some point they just have to much for me.
+To much of functionality I do not use.
+
+To accommodate my way of working, I ended up using tiling window managers
+such as [i3](http://i3wm.org/) to finally [Xmonad](http://xmonad.org/)
+(associated with [taffybar](https://github.com/travitch/taffybar)).
+Those tools are just perfect. Minimalistic and awesome (I mean the adjective,
+but this appends to also name another tiling window manager). The only problem
+I still had was: what terminal emulator should I use? I have been using
+interchangeably `xfce4-terminal`, `konsole` and `gnome-terminal`. However,
+they tend to bring with them the entire set of libraries designed to support
+entire desktop environments. I do not really need those just to run `vim`
+within my terminal emulator…
+
+After some time, I finally gave a shot to
+[`rxvt-unicode`](http://software.schmorp.de/pkg/rxvt-unicode.html) (also known
+as `urxvt`). Unlike the previous terminal emulators I mentioned, the default
+look and feel is kind of “wurch”, and there is no menu to configure it. Like
+the “good old days”, a regular configuration file does the trick, here I present
+to you `~/.Xresources`. It is a general configuration for X related application
+look and feel. It controls fonts, colors, shapes of graphical elements… A
+presentation.
+
+Here is my configuration to get a [solarized](http://ethanschoonover.com/solarized)
+presentation (borrowed from [here](https://github.com/solarized/xresources)):
+
+```
+!-------------------------------------------------------------------------------
+! Xft settings
+!-------------------------------------------------------------------------------
+Xft.dpi: 96
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.hintstyle: hintslight
+!-------------------------------------------------------------------------------
+! URxvt settings
+! Colours lifted from Solarized (http://ethanschoonover.com/solarized)
+! More info at:
+! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
+!-------------------------------------------------------------------------------
+URxvt.depth: 32
+URxvt.transparent: false
+URxvt.fading: 0
+URxvt.urgentOnBell: true
+URxvt.visualBell: true
+URxvt.loginShell: true
+URxvt.font: xft:Liberation Mono for Powerline:size=9
+! URxvt*boldFont: xft:Monospace:pixelsize=14
+! Fix font space
+! URxvt*letterSpace: -1
+! Scrollbar
+URxvt.scrollStyle: rxvt
+URxvt.scrollBar: false
+! Perl extensions
+URxvt.perl-ext-common: default,matcher
+URxvt.matcher.button: 1
+URxvt.urlLauncher: firefox
+! Cursor
+URxvt.cursorBlink: true
+URxvt.cursorColor: #657b83
+URxvt.cursorUnderline: false
+! Pointer
+URxvt.pointerBlank: true
+
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
+
+*background:            S_base3
+*foreground:            S_base00
+*fadeColor:             S_base3
+*cursorColor:           S_base01
+*pointerColorBackground:S_base1
+*pointerColorForeground:S_base01
+
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
+
+!! black dark/light
+*color0:                S_base02
+*color8:                S_base03
+
+!! red dark/light
+*color1:                S_red
+*color9:                S_orange
+
+!! green dark/light
+*color2:                S_green
+*color10:               S_base01
+
+!! yellow dark/light
+*color3:                S_yellow
+*color11:               S_base00
+
+!! blue dark/light
+*color4:                S_blue
+*color12:               S_base0
+
+!! magenta dark/light
+*color5:                S_magenta
+*color13:               S_violet
+
+!! cyan dark/light
+*color6:                S_cyan
+*color14:               S_base1
+
+!! white dark/light
+*color7:                S_base2
+*color15:               S_base3
+```
+
+As you can see, I also use fonts tailored for
+[powerline](https://github.com/powerline/powerline). They can be found
+[here](https://github.com/powerline/fonts), then just follow installation
+instructions. Last interesting point of `urxvt`, it us a full 256 colors
+terminal emulator! Welcome in 2015, but the fact is that the other terminal
+emulators I mentioned earlier only do 16, and get a pretty limited output when
+using powerline.
+
+One annoying thing about thing with this “old-style” terminal emulator is that
+it is not well supported by remote servers when connecting through `ssh`.
+Additional terminfo descriptions might have to be installed (copy the files
+`rxvt-unicode` and `rxvt-unicode-256color` in `/usr/share/terminfo/r/` or
+`~/.terminfo/r/`).
+
+More usefull information can be found at
+[ArchLinux wiki](https://wiki.archlinux.org/index.php/Rxvt-unicode), they got
+detailed explanations.
+
+Here it is for tonight, this was my bookmark post!
