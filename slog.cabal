@@ -7,6 +7,7 @@ executable site
   main-is:          site.hs
   build-depends:    base == 4.*
                   , hakyll == 4.7.*
+                  , hakyll-contrib-hyphenation == 0.1.0.3
                   , filepath
                   , time
   ghc-options:      -threaded

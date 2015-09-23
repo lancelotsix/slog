@@ -8,6 +8,7 @@ import           System.FilePath ((</>))
 import           Data.Time.Format (TimeLocale(..))
 import           Data.List (find)
 import           Data.Maybe (Maybe(..), fromMaybe)
+import           Hakyll.Contrib.Hyphenation (hyphenateHtml, french, english_US)
 
 
 --------------------------------------------------------------------------------
@@ -38,6 +39,8 @@ main = hakyllWith config $ do
             >>= saveSnapshot "content"
             >>= loadAndApplyTemplate "templates/post.html" postCtx
             >>= loadAndApplyTemplate "templates/slog.html" postCtx
+            >>= hyphenateHtml french
+            >>= hyphenateHtml english_US
             >>= relativizeUrls
 
     create ["archives.html"] $ do
@@ -52,6 +55,7 @@ main = hakyllWith config $ do
             makeItem ""
                 >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
                 >>= loadAndApplyTemplate "templates/slog.html" archiveCtx
+                >>= hyphenateHtml french
                 >>= relativizeUrls
 
 
@@ -66,6 +70,7 @@ main = hakyllWith config $ do
             getResourceBody
                 >>= applyAsTemplate indexCtx
                 >>= loadAndApplyTemplate "templates/slog.html" indexCtx
+                >>= hyphenateHtml french
                 >>= relativizeUrls
 
     match "templates/*" $ compile templateCompiler
