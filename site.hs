@@ -8,12 +8,15 @@ import           System.FilePath ((</>))
 import           Data.Time.Format (TimeLocale(..))
 import           Data.List (find)
 import           Data.Maybe (Maybe(..), fromMaybe)
+import           Data.Time.Clock(UTCTime(..), getCurrentTime)
+import           Data.Time.Calendar(showGregorian)
 import           Hakyll.Contrib.Hyphenation (hyphenateHtml, french, english_US)
 
 
 --------------------------------------------------------------------------------
 main :: IO ()
-main = hakyllWith config $ do
+main = getCurrentTime >>= \curTime ->
+  hakyllWith config $ do
     -- All the static resources
     match (    fromGlob "lancelot_six.pdf"
           .||. fromGlob "images/**"
@@ -30,15 +33,15 @@ main = hakyllWith config $ do
                     ,"recherche.markdown"]) $ do
         route   $ setExtension "html"
         compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/slog.html" blogCtx
+            >>= loadAndApplyTemplate "templates/slog.html" (blogCtx curTime)
             >>= relativizeUrls
 
     match "posts/*" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
             >>= saveSnapshot "content"
-            >>= loadAndApplyTemplate "templates/post.html" postCtx
-            >>= loadAndApplyTemplate "templates/slog.html" postCtx
+            >>= loadAndApplyTemplate "templates/post.html" (postCtx curTime)
+            >>= loadAndApplyTemplate "templates/slog.html" (postCtx curTime)
             >>= hyphenateHtml french
             >>= hyphenateHtml english_US
             >>= relativizeUrls
@@ -48,9 +51,9 @@ main = hakyllWith config $ do
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
             let archiveCtx =
-                    listField "posts" postCtx (return posts) `mappend`
+                    listField "posts" (postCtx curTime) (return posts) `mappend`
                     constField "title" "Archives"            `mappend`
-                    blogCtx
+                    blogCtx curTime
 
             makeItem ""
                 >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
@@ -64,9 +67,9 @@ main = hakyllWith config $ do
         compile $ do
             posts <- recentFirst =<< loadAllSnapshots "posts/*" "content"
             let indexCtx =
-                    listField "posts" teaserCtx (return posts) `mappend`
+                    listField "posts" (teaserCtx curTime) (return posts) `mappend`
                     constField "title" "Home"                  `mappend`
-                    blogCtx
+                    blogCtx curTime
             getResourceBody
                 >>= applyAsTemplate indexCtx
                 >>= loadAndApplyTemplate "templates/slog.html" indexCtx
@@ -100,13 +103,14 @@ findLicense (Just lname) = case find (\l -> name l == lname) licenseList of
                              Nothing -> Nothing
 findLicense Nothing = Just defaultLicense
 --------------------------------------------------------------------------------
-postCtx :: Context String
-postCtx =
+postCtx :: UTCTime
+        -> Context String
+postCtx t =
     field "license-desc-url" (licenseElt refUrl) `mappend`
     field "license-name" (licenseElt name)  `mappend`
     field "license-logo-url" (licenseElt logoUrl)  `mappend`
     dateFieldWith frenchTime "date" "%e %B %Y" `mappend`
-    blogCtx
+    blogCtx t
   where licenseElt :: (License -> String) -> Item String -> Compiler String
         licenseElt accessor i =  do
           lname <- getMetadataField (itemIdentifier i) "license"
@@ -114,13 +118,16 @@ postCtx =
                   Nothing -> error $ "Unknown license " ++ fromMaybe "" lname ++ " for item " ++ show (itemIdentifier i)
                   Just l -> return $ accessor l
 
-teaserCtx :: Context String
-teaserCtx = teaserField "teaser" "content" `mappend` postCtx
+teaserCtx :: UTCTime
+          -> Context String
+teaserCtx t = teaserField "teaser" "content" `mappend` postCtx t
 
-blogCtx :: Context String
-blogCtx = constField "blogtitle" "S.Log" `mappend`
-          -- constField "blogtitle" "σλog" `mappend`
-          defaultContext
+blogCtx :: UTCTime
+        -> Context String
+blogCtx t = constField "blogtitle" "S.Log" `mappend`
+            constField "buildDate" ((showGregorian . utctDay) t) `mappend`
+            -- constField "blogtitle" "σλog" `mappend`
+            defaultContext
 
 --------------------------------------------------------------------------------
 frenchTime :: TimeLocale
