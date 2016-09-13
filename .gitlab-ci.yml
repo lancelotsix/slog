@@ -1,0 +1,18 @@
+image: fpco/stack-build:lts-6.17
+
+before_script:
+  - export STACK_ROOT=`pwd`/.stack
+  - stack setup
+  - stack build --only-dependencies
+
+cache:
+  paths:
+    - .stack
+
+build:
+  script:
+    - stack build
+    - stack exec site build
+  artifacts:
+    paths:
+      - _site
