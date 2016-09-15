@@ -10,7 +10,6 @@ import           Data.List (find)
 import           Data.Maybe (Maybe(..), fromMaybe)
 import           Data.Time.Clock(UTCTime(..), getCurrentTime)
 import           Data.Time.Calendar(showGregorian)
-import           Hakyll.Contrib.Hyphenation (hyphenateHtml, french, english_US)
 
 
 --------------------------------------------------------------------------------
@@ -42,8 +41,6 @@ main = getCurrentTime >>= \curTime ->
             >>= saveSnapshot "content"
             >>= loadAndApplyTemplate "templates/post.html" (postCtx curTime)
             >>= loadAndApplyTemplate "templates/slog.html" (postCtx curTime)
-            >>= hyphenateHtml french
-            >>= hyphenateHtml english_US
             >>= relativizeUrls
 
     create ["archives.html"] $ do
@@ -58,7 +55,6 @@ main = getCurrentTime >>= \curTime ->
             makeItem ""
                 >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
                 >>= loadAndApplyTemplate "templates/slog.html" archiveCtx
-                >>= hyphenateHtml french
                 >>= relativizeUrls
 
 
@@ -73,7 +69,6 @@ main = getCurrentTime >>= \curTime ->
             getResourceBody
                 >>= applyAsTemplate indexCtx
                 >>= loadAndApplyTemplate "templates/slog.html" indexCtx
-                >>= hyphenateHtml french
                 >>= relativizeUrls
 
     match "templates/*" $ compile templateCompiler
