@@ -6,7 +6,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	</head>
 	<body>
-		<div id="header">
+		<header>
 			<!-- <div id="banner">$blogtitle$</div> -->
 			<div id="navigation">
 				<ul>
@@ -17,19 +17,21 @@
 					<li><a href="/archives.html">Archives</a>
 				</ul>
 			</div>
-		</div>
+		</header>
 		<div id="body">
 			<div id="content_wrapper">
-				<div id="content">
+				<main>
 					$body$
-				</div>
-				<div id="footer">
+				</main>
+				<footer>
 					<ul>
-						<li>Généré avec <a href="http://jaspervdj.be/hakyll/" target="_blank">hakyll</a>
-						<li><a href="http://www.haskellers.com/user/3566"><img src="/images/badge-haskeller.png" alt="I'm a Haskeller">
-</a> le $buildDate$
+						<li>Généré avec <a href="http://jaspervdj.be/hakyll/" target="_blank">hakyll</a> le $buildDate$</li>
+						<li><a href="http://www.haskellers.com/user/3566"><img src="/images/badge-haskeller.png" alt="I'm a Haskeller"></a></li>
 					</ul>
-				</div>
+					<div>
+						PGP: <code>ABB5 B55C 9A3A 6A28 9724  8BDC 02E1 542B A66F B047</code> (<a href="/pub.txt">clé publique</a>)
+					</div>
+				</footer>
 			</div>
 		</div>
 	</body>

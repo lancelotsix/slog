@@ -20,6 +20,7 @@ main = getCurrentTime >>= \curTime ->
     match (    fromGlob "lancelot_six.pdf"
           .||. fromGlob "images/**"
           .||. fromGlob "publications/*"
+          .||. fromGlob "pub.txt"
           ) $ do
             route idRoute
             compile copyFileCompiler
