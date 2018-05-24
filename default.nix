@@ -1,8 +1,8 @@
-{ nixpkgs ? import <nixpkgs> {}, compiler ? "ghc7102" }:
+{ nixpkgs ? import <nixpkgs> {}, compiler ? "ghc822" }:
 let
   inherit (nixpkgs) pkgs;
   ghc = pkgs.haskell.packages.${compiler}.ghcWithPackages (ps: with ps; [
-          base cabal-install system-filepath hakyll hakyll-contrib-hyphenation
+          base cabal-install system-filepath hakyll
         ]);
 in
 pkgs.stdenv.mkDerivation {

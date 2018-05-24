@@ -145,5 +145,5 @@ frenchTime = TimeLocale { wDays = [ ("Lundi", "Lun"), ("Mardi", "Mar"), ("Mercre
 config :: Configuration
 config = defaultConfiguration { deployCommand = "rsync -rv --delete "
                                                 ++ destinationDirectory defaultConfiguration </> "."
-                                                ++ " llog:/var/www/"
+                                                ++ " llog:/var/www/html"
                               }
