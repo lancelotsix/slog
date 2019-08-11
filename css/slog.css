@@ -123,6 +123,21 @@ footer ul li * {
 	margin-left: 1em;
 }
 
+table {
+	border: 1px solid black;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+table th {
+	background-color: rgb(250, 250, 250);
+}
+
+table tbody tr {
+	border: 1px solid black;
+}
+
 /*****************************************************************************/
 /*                                                                           */
 /*                       Syntax highlighting for code                        */
